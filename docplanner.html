@@ -1,0 +1,722 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <style>
+      .body {
+        font-family: Arial, sans-serif;
+      }
+
+      /* Style de l'en-tête */
+      header {
+        background-color: #fff;
+        position: fixed; /* L'en-tête reste fixe en haut de la page */
+        top: 0;
+        text-align: center;
+        width: 100%;
+        border: 3px solid transparent;
+        z-index: 1000; /* Assure que l'en-tête est au-dessus des autres éléments */
+        display: flex;
+        justify-content: space-between;
+        padding: 10px 20px; /* Espacement à l'intérieur de l'en-tête */
+      }
+
+      /* Style de la barre de navigation */
+      .navbar {
+        margin-right: 240px;
+        display: flex;
+      }
+
+      /* Style des liens dans la barre de navigation */
+      .navbar a {
+        color: #747474;
+        text-decoration: none; /* Supprime la soulignement des liens */
+        padding: 14px 16px; /* Espacement à l'intérieur des liens */
+        display: block; /* Les liens occupent toute la largeur de la barre de navigation */
+      }
+      .logo {
+        margin-left: 200px;
+        cursor: grab; /*type de curseur */
+      }
+      /* Changement de couleur au survol des liens */
+      .navbar a:hover {
+        color: #00b39b;
+      }
+      #a1 {
+        color: #00b39b;
+      }
+
+      .menu_horizontal {
+        position: absolute;
+        display: flex;
+        flex-direction: column; /*direction de menu horizontal*/
+        box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2); /* style de div ombre*/
+        display: none; /* affichage caché */
+      }
+      .menu_horizontal a {
+        text-decoration: none;
+        background-color: white;
+        color: #747474;
+        width: 200px;
+        height: 40px;
+        margin-top: 1px;
+        padding: 15px;
+      }
+      .menu_horizontal a:hover {
+        background-color: #f1f1f1;
+      }
+      .dropdown:hover .menu_horizontal {
+        display: block;
+      }
+      .dropdown {
+        position: relative;
+      }
+      section {
+        margin-right: 200px;
+        margin-left: 200px;
+        position: relative;
+        top: 120px;
+      }
+      figcaption {
+        text-align: center;
+        margin-top: 20px;
+      }
+      .titre {
+        font-size: 30px;
+        margin-top: 30px;
+        margin-bottom: 30px;
+        color: #00b39b;
+        font-family: Verdana, Geneva, Tahoma, sans-serif;
+      }
+      .titre1 {
+        width: 30%;
+        height: 200px;
+        margin-left: 50px;
+      }
+      .titre3 {
+        font-size: 20px;
+        margin-top: 30px;
+        margin-bottom: 30px;
+        color: #00b39b;
+        font-family: Verdana, Geneva, Tahoma, sans-serif;
+        text-align: center;
+      }
+      .container {
+        display: flex;
+        justify-content: space-around;
+      }
+      .par {
+        width: 48%;
+        color: #747474;
+        text-align: left;
+        font-family: Verdana, Geneva, Tahoma, sans-serif;
+        line-height: 170%; /* espace entre les lignes*/
+      }
+
+      .sec {
+        width: 25%;
+        height: 300px;
+        border-radius: 10px;
+        padding: 40px;
+        color: white;
+      }
+      .s1 {
+        background-color: #00b39b;
+      }
+      .s2 {
+        background-color: rgb(0, 132, 255);
+      }
+      .s3 {
+        background-color: rgb(49, 47, 51);
+      }
+      .content {
+        margin-right: 200px;
+        margin-left: 200px;
+        display: flex;
+        justify-content: space-between;
+        margin-top: 170px;
+      }
+      .box {
+        background: transparent;
+        border: 0;
+        border-radius: 0;
+        outline: 0;
+        text-transform: none;
+        text-decoration: underline; /*text soulignée*/
+        color: white;
+        font-size: 18px;
+        cursor: grab;
+        padding-bottom: 20px;
+      }
+      #ss {
+        color: black;
+      }
+      .sec h1 {
+        color: white;
+        text-align: left;
+      }
+      .sec:hover {
+        opacity: 0.8; /*spécifie la transparence d'un element*/
+      }
+
+      .tt {
+        font-size: 20px;
+        text-decoration: none;
+        color: #747474;
+      }
+
+      .flex {
+        margin-right: 200px;
+        margin-left: 150px;
+        display: flex;
+        margin-top: 70px;
+      }
+
+      .grid1 {
+        display: grid;
+        grid-template-columns: repeat(4, 1fr);
+        width: 70%;
+        margin-left: 50px;
+      }
+      ul {
+        display: flex;
+      }
+      ul li {
+        list-style: none;
+      }
+
+      .bleu {
+        display: flex;
+        top: 40px;
+        background-color: rgb(199, 245, 229);
+        height: 600px;
+        overflow: hidden;
+      }
+      .contenu {
+        width: 700px;
+        height: 300px;
+        margin-top: 70px;
+        margin-left: 25%;
+      }
+      .contenu p {
+        text-align: center;
+        color: #747474;
+      }
+      .texte {
+        margin-left: 220px;
+        padding-top: 50px;
+        width: 400px;
+      }
+      .sygnet {
+        margin-left: 50px;
+        margin-top: 30px;
+      }
+      .bloc1 {
+        width: 250px;
+        height: 250px;
+        background-color: white;
+        border-radius: 10px;
+        margin-top: 15px;
+      }
+      .bloc2 {
+        width: 250px;
+        height: 250px;
+        background-color: white;
+        border-radius: 10px;
+        margin-top: 15px;
+      }
+      .div2 {
+        margin-top: 50px;
+        margin-right: 30px;
+        margin-left: 100px;
+      }
+      .div3 {
+        margin-top: 30px;
+        margin-top: 10px;
+      }
+      .imgbloc {
+        padding-top: 30px;
+        margin-left: 40%;
+      }
+      .galerie {
+        margin-left: 15%;
+        height: 1400px;
+        display: grid;
+        grid-template-columns: 25% 25% 25%;
+
+        column-gap: 5%;
+      }
+      .gal {
+        display: flex;
+        justify-content: space-between;
+        width: 310px;
+        margin-top: 0px;
+        background-color: #ffffffe2;
+        border-radius: 0 0 10px 10px;
+        height: 50px;
+        align-items: center;
+      }
+      .gal:hover {
+        opacity: 0.5;
+      }
+      .image1 img {
+        border-radius: 10px 10px 0 0;
+      }
+
+      button {
+        background-color: blue;
+        color: white;
+        font-size: 12px;
+        border-radius: 5px;
+        border: 1px solid blue;
+        padding: 5px;
+      }
+      .inter p {
+        font-size: 40px;
+        text-align: center;
+      }
+      .buttonlarge {
+        background-color: blue;
+        color: white;
+        font-size: 20px;
+        margin-left: 44%;
+        border-radius: 5px;
+        border: 1px solid blue;
+        padding: 10px;
+      }
+      footer p {
+        text-align: center;
+        color: #747474;
+        font-size: 12px; /*taille de police*/
+      }
+      footer a {
+        color: rgb(110, 110, 158);
+        text-decoration: none;
+      }
+      footer a:hover {
+        text-decoration: underline;
+      }
+      footer {
+        border-top: 1px solid #747474;
+      }
+    </style>
+  </head>
+  <body>
+    <!--  barre de navigation -->
+    <header>
+      <div class="logo">
+        <img src="images/logo.png" alt="logo" />
+      </div>
+      <!-- menu vertical -->
+      <div class="navbar">
+        <a href="#" id="a1">About us</a>
+        <a href="#">Career</a>
+        <!-- menu horizontal -->
+        <div class="dropdown">
+          <div class="drap"><a href="#">Departments</a></div>
+          <div class="menu_horizontal">
+            <a href="#">Marketing & PR</a>
+            <a href="#">Customer Success & Sales</a>
+            <a href="#">Finance & Administration</a>
+            <a href="#">HR & More</a>
+          </div>
+        </div>
+      </div>
+    </header>
+    <!-- la premiere section de la page -->
+    <section>
+      <figcaption>
+        <img src="images/sygnet.png" alt="images" />
+      </figcaption>
+      <div class="titre">
+        <center>Making the healthcare experience more human</center>
+      </div>
+      <div class="container">
+        <p class="par">
+          We want patients to find the perfect doctor and book an appointment in
+          the most easy way. The patient journey should be enjoyable, and that's
+          why we are always next to them: to help them find the best possible
+          care. Anytime, anywhere.
+        </p>
+        <p class="par">
+          We also help doctors to better manage their practice and build their
+          online reputation. With our integrated end-to-end solution, doctors
+          are able not only to improve their online presence, but also to devote
+          their time to what really matters: their patients.
+        </p>
+      </div>
+    </section>
+    <!-- la deuxième section de la page -->
+    <div class="content">
+      <div class="sec s1">
+        <img
+          src="https://www.docplanner.com/icons/icon-patients.svg"
+          alt="patient"
+        />
+        <h1>For patients</h1>
+        <h2>Find a doctor, book a visit and solve any health-related doubt</h2>
+        <br /><br />
+        <!-- liste d'option  -->
+        <select class="box">
+          <option value="">--choose country--</option>
+          <option value="" id="ss">Argentina</option>
+          <option value="" id="ss">Brasil</option>
+          <option value="" id="ss">Chile</option>
+          <option value="" id="ss">Colombia</option>
+          <option value="" id="ss">Czech</option>
+          <option value="" id="ss">Germany</option>
+          <option value="" id="ss">Italy</option>
+          <option value="" id="ss">Mexico</option>
+          <option value="" id="ss">Peru</option>
+          <option value="" id="ss">Poland</option>
+          <option value="" id="ss">Portogal</option>
+          <option value="" id="ss">Spain</option>
+          <option value="" id="ss">Turkey</option>
+        </select>
+      </div>
+      <div class="sec s2">
+        <img
+          src="https://www.docplanner.com/icons/icon-doctors.svg"
+          alt="doctor"
+        />
+        <h1>For doctors</h1>
+        <h2>Save time managing visits and cut no-shows by half</h2>
+        <br /><br />
+
+        <select class="box">
+          <option value="">--choose country--</option>
+          <option value="" id="ss">Argentina</option>
+          <option value="" id="ss">Brasil</option>
+          <option value="" id="ss">Chile</option>
+          <option value="" id="ss">Colombia</option>
+          <option value="" id="ss">Czech</option>
+          <option value="" id="ss">Germany</option>
+          <option value="" id="ss">Italy</option>
+          <option value="" id="ss">Mexico</option>
+          <option value="" id="ss">Peru</option>
+          <option value="" id="ss">Poland</option>
+          <option value="" id="ss">Portogal</option>
+          <option value="" id="ss">Spain</option>
+          <option value="" id="ss">Turkey</option>
+        </select>
+      </div>
+      <div class="sec s3">
+        <img
+          src="https://www.docplanner.com/icons/icon-clinics.svg"
+          alt="clinics"
+        />
+        <h1>For clinics</h1>
+        <h2>Deliver an exceptional patient experience in your clinic</h2>
+        <br />
+        <select class="box">
+          <option value="">--2 to 20 specialists--</option>
+          <option value="" id="ss">Argentina</option>
+          <option value="" id="ss">Brasil</option>
+          <option value="" id="ss">Chile</option>
+          <option value="" id="ss">Colombia</option>
+        </select>
+        <br />
+        <div></div>
+
+        <select class="box">
+          <option value="">--More than 20 specialists--</option>
+          <option value="" id="ss">Argentina</option>
+          <option value="" id="ss">Brasil</option>
+          <option value="" id="ss">Chile</option>
+          <option value="" id="ss">Colombia</option>
+        </select>
+      </div>
+    </div>
+    <!-- la troisième section de la page -->
+    <div class="flex">
+      <div class="titre titre1">
+        We are a global company &nbsp;&nbsp;
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; with local
+        culture
+      </div>
+      <div class="grid1">
+        <div class="tt itme">
+          <img
+            src="https://www.docplanner.com/img/sygnet.png"
+            alt="icone"
+            width="30px"
+            height="20px"
+          />
+          <a href="#" class="tt"> ZnanyLekar</a>
+        </div>
+        <div class="tt itme">
+          <img
+            src="https://www.docplanner.com/img/sygnet.png"
+            alt="icone"
+            width="30px"
+            height="20px"
+          />
+          <a href="#" class="tt">Doctoralia</a>
+        </div>
+        <div class="tt itme">
+          <img
+            src="https://www.docplanner.com/img/sygnet.png"
+            alt="icone"
+            width="30px"
+            height="20px"
+          />
+          <a href="#" class="tt">MioDottore</a>
+        </div>
+        <div class="tt itme">
+          <img
+            src="https://www.docplanner.com/img/sygnet.png"
+            alt="icone"
+            width="30px"
+            height="20px"
+          />
+          <a href="#" class="tt">DoktorTakvimi</a>
+        </div>
+        <div class="tt itme">
+          <img
+            src="https://www.docplanner.com/img/sygnet.png"
+            alt="icone"
+            width="30px"
+            height="20px"
+          />
+          <a href="#" class="tt">ZamyLecar</a>
+        </div>
+        <div class="tt itme">
+          <img
+            src="https://www.docplanner.com/img/sygnet.png"
+            alt="icone"
+            width="30px"
+            height="20px"
+          />
+          <a href="#" class="tt">Jameda</a>
+        </div>
+        <div class="itme">
+          <img
+            src="https://www.docplanner.com/img/sygnet.png"
+            alt="icone"
+            width="30px"
+            height="20px"
+          />
+          <a href="#" class="tt"> TUOTEMPO</a>
+        </div>
+        <div class="itme">
+          <img
+            src="https://www.docplanner.com/img/sygnet.png"
+            alt="icone"
+            width="30px"
+            height="20px"
+          /><a href="#" class="tt"> TUOTEMPO</a>
+        </div>
+        <div class="itme">
+          <img
+            src="https://www.docplanner.com/img/sygnet.png"
+            alt="icone"
+            width="30px"
+            height="20px"
+          />
+          <a href="#" class="tt">Figow</a>
+        </div>
+      </div>
+    </div>
+    <!-- la quatrième section de la page -->
+    <div class="bleu">
+      <div class="div1">
+        <div class="texte">
+          <h1 class="titre">The world's biggest healthcare platform</h1>
+
+          <p>
+            We work from 9 offices all over the world, bringing Docplanner Group
+            to life in 13 countries.
+          </p>
+        </div>
+        <div class="sygnet">
+          <img
+            src="https://www.docplanner.com/img/logo.png"
+            alt="sygnet"
+            class="sygnet"
+          />
+        </div>
+      </div>
+      <div class="div2">
+        <div class="bloc1">
+          <img
+            src="https://www.docplanner.com/img/flag.png"
+            alt="flag"
+            class="imgbloc"
+          />
+          <h2 class="titre3">Leader in 13 countries</h2>
+          <p>
+            <center>
+              Poland, Brazil, Mexico, Spain, Italy, Germany, Turkey, Colombia,
+              Czech Republic, Portugal, Argentina, Peru and Chile
+            </center>
+          </p>
+        </div>
+        <div class="bloc1">
+          <img
+            src="https://www.docplanner.com/img/patients.png"
+            alt="patients"
+            class="imgbloc"
+          />
+          <h2 class="titre3">90,000,000 patients</h2>
+
+          <center>visit our websites each month</center>
+        </div>
+      </div>
+      <div class="div3">
+        <div class="bloc2">
+          <img
+            src="https://www.docplanner.com/img/visits.png"
+            alt="visits"
+            class="imgbloc"
+          />
+          <h2 class="titre3">15,000,000 appointments</h2>
+          <p>
+            <center>booked last month</center>
+          </p>
+        </div>
+        <div class="bloc2">
+          <img
+            src="https://www.docplanner.com/img/doctors.png"
+            alt="doctors"
+            class="imgbloc"
+          />
+          <h2 class="titre3">210,000 active doctors</h2>
+          <p>
+            <center>trust our solutions</center>
+          </p>
+        </div>
+      </div>
+    </div>
+    <!-- la 5ème section de la page -->
+    <div class="contenu">
+      <h1 class="titre3">Improve the lives of millions.</h1>
+      <h1 class="titre3">Change yours forever.</h1>
+      <p>More than 2800 team mates share our same vision, goals and passion.</p>
+      <p>
+        With offices in Warsaw, Barcelona, Munich, Istanbul, Rome, Rio, Bologna,
+      </p>
+      <p>Mexico City and Curitiba, our search for great talent never stops.</p>
+    </div>
+    <!-- la 6ème section de la page -->
+    <div class="galerie">
+      <div class="image1">
+        <img src="https://www.docplanner.com/images/warsaw.png" alt="warsaw" />
+        <div class="gal">
+          <div class="gal2">Warsaw</div>
+          <div class="gal1"><button type="button">see opening</button></div>
+        </div>
+      </div>
+      <div class="image1">
+        <img
+          src="https://www.docplanner.com/images/barcelona.png"
+          alt="barcelona"
+        />
+        <div class="gal">
+          <div class="gal2">barcelona</div>
+          <div class="gal1"><button type="button">see opening</button></div>
+        </div>
+      </div>
+      <div class="image1">
+        <img src="https://www.docplanner.com/images/munich.png" alt="munich" />
+        <div class="gal">
+          <div class="gal2">munich</div>
+          <div class="gal1"><button type="button">see opening</button></div>
+        </div>
+      </div>
+      <div class="image1">
+        <img
+          src="https://www.docplanner.com/images/istanbul.png"
+          alt="istanbul"
+        />
+        <div class="gal">
+          <div class="gal2">istanbul</div>
+          <div class="gal1"><button type="button">see opening</button></div>
+        </div>
+      </div>
+      <div class="image1">
+        <img src="https://www.docplanner.com/images/rome.png" alt="rome" />
+        <div class="gal">
+          <div class="gal2">rome</div>
+          <div class="gal1"><button type="button">see opening</button></div>
+        </div>
+      </div>
+      <div class="image1">
+        <img
+          src="https://www.docplanner.com/images/bologna.png"
+          alt="bologna"
+        />
+        <div class="gal">
+          <div class="gal2">bologna</div>
+          <div class="gal1"><button type="button">see opening</button></div>
+        </div>
+      </div>
+      <div class="image1">
+        <img
+          src="https://www.docplanner.com/images/curitiba.png"
+          alt="curitiba"
+        />
+        <div class="gal">
+          <div class="gal2">curitiba</div>
+          <div class="gal1"><button type="button">see opening</button></div>
+        </div>
+      </div>
+      <div class="image1">
+        <img
+          src="https://www.docplanner.com/images/rio-janeiro.png"
+          alt="rio-janeiro"
+        />
+        <div class="gal">
+          <div class="gal2">rio-janeiro</div>
+          <div class="gal1"><button type="button">see opening</button></div>
+        </div>
+      </div>
+      <div class="image1">
+        <img
+          src="https://www.docplanner.com/images/mexico-city.png"
+          alt="mexico-city"
+        />
+        <div class="gal">
+          <div class="gal2">mexico-city</div>
+          <div class="gal1"><button type="button">see opening</button></div>
+        </div>
+      </div>
+      <div class="image1">
+        <img
+          src="https://www.docplanner.com/images/mexico-city.png"
+          alt="bogota"
+        />
+        <div class="gal">
+          <div class="gal2">mexico-city</div>
+          <div class="gal1"><button type="button">see opening</button></div>
+        </div>
+      </div>
+    </div>
+    <br />
+    <br />
+    <!-- la 7ème section de la page -->
+    <div class="inter">
+      <p>Sounds interesting? Join us now!</p>
+      <button type="button" class="buttonlarge">see all current opening</button>
+    </div>
+    <br />
+    <br /><br /><br /><br /><br />
+    <!-- la bas de la page -->
+    <footer>
+      <p>
+        We are leaders in 13 countries:<a href="#">Poland</a>,<a href="#"
+          >Turkey</a
+        >
+        , <a href="#">Spain</a> ,<a href="#">Italy</a> ,
+        <a href="#">Germany</a>, <a href="#">Czech Republic</a>,<a href="#"
+          >Portugal</a
+        >,<a href="#">Mexico</a> <a href="#">Colombia</a>,<a href="#">Brazil</a
+        >,<a href="#">Argentina</a>, <a href="#">Peru </a>and<a href="#"
+          >Chile
+        </a>
+      </p>
+      <p>www.docplanner.com © 2023</p>
+    </footer>
+  </body>
+</html>
